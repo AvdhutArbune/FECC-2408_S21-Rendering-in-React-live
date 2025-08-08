@@ -15,20 +15,29 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.querySelector('.root')
-    function User({ name, email }) {
-        return <>
-            <input type="radio" id={name} value={email} />
-            <p>{name}</p>
-            <h6>{email}</h6>
-        </>
+    function TableRow() {
+        return (
+            <>
+                <td>Name</td>
+                <td>Age</td>
+            </>
+        );
     }
-    function App() {
-        return <>
-            <User name='Avdhut Arbune' email='A@gmail.com'/>
-        </>
 
+    function Table() {
+        return (
+            <table border="1">
+                <tbody>
+                    <tr>
+                        <TableRow />
+                    </tr>
+                </tbody>
+            </table>
+        );
     }
-    ReactDOM.createRoot(root).render(<App />)
+
+
+    ReactDOM.createRoot(root).render(<Table />)
 </script>
 
 </html>

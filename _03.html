@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Practise Example</title>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.querySelector('.root');
+        function Card({ title, content }) {
+            return <>
+                <h1>{title}</h1>
+                <p>{content}</p>
+            </>
+        }
+
+
+        function Button({label,onClick}) {
+            return<>
+            <button onClick={onClick}>{label}</button>
+            </>   
+        }
+        function HandleAlert(){
+            return window.alert('button Clickerd')
+        }
+
+        function App() {
+            return (
+                <>
+                    <Card title='Spierman'  content='lorem guguygdfyughfefugefyygefuygefu'/>
+                    <Card title='Superman' content='I am the Superman of Universe' />
+                    <Button label='Click Me' onClick={HandleAlert}/>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(root).render(<App />);
+    </script>
+</body>
+
+</html>
