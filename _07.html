@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 220px;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4cafef;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3a9ad9;
+        }
+
+        button:nth-child(3) {
+            background-color: #f44336;
+        }
+
+        button:nth-child(3):hover {
+            background-color: #d7382d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.querySelector('.root');
+
+        function MathMarks() {
+            const [mathmark, setmathmark] = React.useState(0)
+            return (
+                <div className="card">
+                    <h1>Math Marks: {mathmark}</h1>
+                    <button onClick={() => setmathmark(mathmark + 1)}>Increment</button>
+                    <button onClick={() => setmathmark(mathmark - 1)}>Decrement</button>
+                </div>
+            );
+        }
+
+        function ScienceMarks() {
+            const [sciencemark, setsciencemark] = React.useState(0)
+            return (
+                <div className="card">
+                    <h1>Science Marks: {sciencemark}</h1>
+                    <button onClick={() => setsciencemark(sciencemark + 1)}>Increment</button>
+                    <button onClick={() => setsciencemark(sciencemark - 1)}>Decrement</button>
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div className="container">
+                    <MathMarks />
+                    <ScienceMarks />
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(root).render(<App />);
+    </script>
+</body>
+
+</html>
