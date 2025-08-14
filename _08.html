@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React input Taking Examples</title>
+    <title>React Checkbox Example</title>
 </head>
 
 <body>
@@ -15,28 +15,25 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-
         const root = document.querySelector('.root');
-        function HandleChange(e) {
-            console.log(e.target.checked ? 'Checked' : 'Unchecked');
 
-        }
-
-        function CheckBox({ HandleChange }) {
+        function CheckBox() {
+            const [status, setStatus] = React.useState('')
+            function HandleChange(e) {
+                let newstatus = e.target.checked ? 'Checked' : 'Unchecked'
+                setStatus(newstatus);
+            }
             return <>
-                <input type="checkbox" id='checkbox' onChange={HandleChange} />
-                <label for="checkbox"> CheckBox </label>
-                <h1>{HandleChange}</h1>
-
+                <input type="checkbox" id="checkbox" onChange={HandleChange} />
+                <label htmlFor="checkbox">CheckBox</label>
+                <h1>{status}</h1>
             </>
         }
-
         function App() {
             return <>
-                <CheckBox HandleChange={HandleChange} />
+                <CheckBox />
             </>
         }
-
         ReactDOM.createRoot(root).render(<App />);
     </script>
 </body>
