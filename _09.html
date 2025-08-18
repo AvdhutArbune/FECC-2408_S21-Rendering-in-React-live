@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Marks Counter</title>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.querySelector('.root');
+        function Marks() {
+            const [mark, setMark] = React.useState({ math: 0, sci: 0, chem: 0 })
+            function Mathsmarks() {
+                setMark({ math: mark.math + 1, sci: mark.sci, chem: mark.chem })
+            }
+            function Scismarks() {
+                setMark({ math: mark.math, sci: mark.sci + 1, chem: mark.chem })
+            }
+            function Chemsmarks() {
+                setMark({ math: mark.math, sci: mark.sci, chem: mark.chem + 1 })
+            }
+            return <>
+                <h1>{mark.math} | {mark.sci} | {mark.chem}</h1>
+                <button onClick={Mathsmarks}>Mathmarks</button>
+                <button onClick={Scismarks}>Scimarks</button>
+                <button onClick={Chemsmarks}>Chemmarks</button>
+            </>
+        }
+
+        function App() {
+            return <Marks />;
+        }
+
+        ReactDOM.createRoot(root).render(<App />);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Marks Counter</title>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.querySelector('.root');
+
+        function MarksTotal() {
+            const [marks, setMarks] = React.useState({ math: 0, phy: 0, chem: 0 });
+
+            function MathMarks() {
+                setMarks({ math: marks.math + 1, phy: marks.phy, chem: marks.chem });
+            }
+            function PhyMarks() {
+                setMarks({ math: marks.math, phy: marks.phy + 1, chem: marks.chem });
+            }
+            function ChemMarks() {
+                setMarks({ math: marks.math, phy: marks.phy, chem: marks.chem + 1 });
+            }
+
+            return (
+                <>
+                    <h1>
+                        Maths: {marks.math} | Physics: {marks.phy} | Chemistry: {marks.chem}
+                    </h1>
+                    <button onClick={MathMarks}>Maths</button>
+                    <button onClick={PhyMarks}>Physics</button>
+                    <button onClick={ChemMarks}>Chemistry</button>
+                </>
+            );
+        }
+
+        function App() {
+            return <MarksTotal />;
+        }
+
+        ReactDOM.createRoot(root).render(<App />);
+    </script>
+</body>
+
+</html>
